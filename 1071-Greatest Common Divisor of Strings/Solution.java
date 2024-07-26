@@ -1,16 +1,22 @@
 class Solution {
-    public String gcdOfStrings(String str1, String str2) {
-        //check mathmaticaly if the two words can have gcd 
-        if (
-            (Math.max(str1.length(),str2.length())%Math.min(str1.length(),str2.length())!=0)
-        ){
+    private static int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
+    }
+    public static String gcdOfStrings(String str1, String str2) {
+        if (!(str1 + str2).equals(str2 + str1)){
+            System.out.println("no gcd");
             return "";
         }
+        return str1.substring(0, gcd(str1.length(), str2.length()));
 
-        
+    }
 
 
-        
-        return"";
+    public static void main(String[] args) {
+        String str1 ="ABABAB";
+        String str2 = "ABAB";
+        System.out.println(gcdOfStrings(str1,str2));
+
+
     }
 }
